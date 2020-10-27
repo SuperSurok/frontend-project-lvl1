@@ -25,6 +25,7 @@
   "homepage": "https://github.com/SuperSurok/frontend-project-lvl1#readme",
   "dependencies": {
     "@hexlet/code": "file:",
-    "make": "^0.8.1"
+    "make": "^0.8.1",
+    "promptly": "^3.1.0"
   }
 }
