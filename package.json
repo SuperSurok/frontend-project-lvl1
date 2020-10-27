@@ -1,0 +1,30 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "brain_games",
+  "main": "index.js",
+  "bin": {
+    "brain-games": "bin/brain-games.js"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuperSurok/frontend-project-lvl1.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Sergey Lebedev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SuperSurok/frontend-project-lvl1/issues"
+  },
+  "homepage": "https://github.com/SuperSurok/frontend-project-lvl1#readme",
+  "dependencies": {
+    "@hexlet/code": "file:",
+    "make": "^0.8.1"
+  }
+}
