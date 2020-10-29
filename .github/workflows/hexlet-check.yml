@@ -9,13 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # Check-out repository under GitHub workspace
-      # https: //github.com/actions/checkout
-      - uses: actions/checkout@v2
-
-      - name: Hexlet project check
-        uses: hexlet/project-action@release
-
       - name: Run linter
         # Run Linter
         run: |
