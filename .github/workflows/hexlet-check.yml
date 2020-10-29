@@ -14,9 +14,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Hexlet project check
-        uses: hexlet/project-action@release
-
       - name: Run linter
         # Run Linter
         run: |
