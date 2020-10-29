@@ -12,11 +12,11 @@ jobs:
       # Check-out repository under GitHub workspace
       # https: //github.com/actions/checkout
       - name: Checkout code
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
 
       - name: Run linter
         # Run Linter
-      - run: |
+        run: |
           make lint
         env:
           DEFAULT_BRANCH: main
