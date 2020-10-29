@@ -3,15 +3,16 @@ name: hexlet-check
 on: push
 
 jobs:
-    runs-on: ubuntu-latest
-    steps:
-      # Check-out repository under GitHub workspace
-      # https: //github.com/actions/checkout
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Run linter
-          # Run Linter
-        run: |
-          make lint
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    build:
+      runs-on: ubuntu-latest
+      steps:
+        # Check-out repository under GitHub workspace
+        # https: //github.com/actions/checkout
+        - name: Checkout code
+          uses: actions/checkout@v2
+        - name: Run linter
+            # Run Linter
+          run: |
+            make lint
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
