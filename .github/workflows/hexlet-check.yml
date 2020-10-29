@@ -3,13 +3,24 @@ name: hexlet-check
 on:
   push:
     branches:
-      - main
+      - $default-branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Check-out repository under GitHub workspace
+      # https: //github.com/actions/checkout
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Hexlet project check
+        uses: hexlet/project-action@release
+
       - name: Run linter
         # Run Linter
         run: |
           make lint
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
