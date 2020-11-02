@@ -1,3 +1,3 @@
-import { brainEvenLogic } from '../src/brain-even-logic.js';
+import brainEvenLogic from '../src/brain-even-logic.js';
 
 brainEvenLogic();
