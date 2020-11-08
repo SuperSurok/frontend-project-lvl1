@@ -7,9 +7,3 @@ export const numberGenRandom = () => Math.floor(Math.random() * 100 + 1);
 export const askUserNumber = (questionNumber) => {
   console.log('Question', questionNumber);
 };
-
-export const decrement = (guessNumber) => () => {
-  let result = guessNumber;
-  result += 1;
-  return result;
-};
