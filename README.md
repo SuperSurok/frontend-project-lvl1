@@ -9,3 +9,5 @@
 [![asciicast](https://asciinema.org/a/jArEUWhFfANv7MaRllGtr9r75.svg)](https://asciinema.org/a/jArEUWhFfANv7MaRllGtr9r75)
 ### Greatest Common Divisor asciinema
 [![asciicast](https://asciinema.org/a/JjOuqXR7akJbhAGJTAJ8MSsOa.svg)](https://asciinema.org/a/JjOuqXR7akJbhAGJTAJ8MSsOa)
+### Arithmetic Progression asciinema
+[![asciicast](https://asciinema.org/a/371664.svg)](https://asciinema.org/a/371664)
