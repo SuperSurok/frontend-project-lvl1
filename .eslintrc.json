@@ -3,11 +3,14 @@
         "browser": true,
         "es2021": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["plugin:prettier/recommended"],
     "parserOptions": {
         "ecmaVersion": 11,
         "sourceType": "module"
     },
+    "plugins": ["prettier"],
     "rules": {
+        "prettier/prettier": "error",
+        "object-curly-newline": "off"
     }
 }
