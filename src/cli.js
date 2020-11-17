@@ -16,3 +16,5 @@ export const primeNumber = (number) => {
   }
   return number > 1;
 };
+
+export const incorrectAnswerPhrase = (responseAnswer, correctResult, name) => console.log(`'${responseAnswer}' is wrong answer ;(. Correct answer was '${correctResult}'.\nLet's try again, ${name}!`);

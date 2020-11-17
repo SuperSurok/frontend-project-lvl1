@@ -1,5 +1,5 @@
 import promptly from 'promptly';
-import { userGreeting, numberGenRandom, askUserNumber } from '../cli.js';
+import { userGreeting, numberGenRandom, askUserNumber, incorrectAnswerPhrase } from '../cli.js';
 
 let guessNumber = 0;
 
@@ -22,7 +22,6 @@ const guessExpression = async (userName) => {
   await promptly.prompt('Your answer:').then((response) => {
     const userAnswerPhrase = Number(response) === result ? continueAnswerPhrase : `${response} is wrong answer ;(. Correct answer was ${result}.\nLet's try again, ${userName}!`;
     console.log(userAnswerPhrase);
-    const incorrectAnswerPhrase = (responseAnswer, correctResult, name) => console.log(`'${responseAnswer}' is wrong answer ;(. Correct answer was '${correctResult}'.\nLet's try again, ${name}!`);
 
     counter();
 

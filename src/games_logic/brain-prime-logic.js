@@ -6,6 +6,7 @@ import {
   askUserNumber,
   numberGenProgression,
   primeNumber,
+  incorrectAnswerPhrase,
 } from '../cli.js';
 
 let guessNumber = 0;
@@ -24,10 +25,7 @@ const guessExpression = async (userName) => {
   const result = primeNumber(randomNumber);
   askUserNumber(randomNumber);
   await promptly.prompt('Your answer:').then((response) => {
-    const userAnswerPhrase = (response === 'yes' && result) || (response === 'no' && !result) ? 'yes' : 'no';
-    console.log("response === 'yes': ", response === 'yes' && result);
-    console.log(userAnswerPhrase);
-    const incorrectAnswerPhrase = (responseAnswer, correctResult, name) => console.log(`'${responseAnswer}' is wrong answer ;(. Correct answer was '${correctResult}'.\nLet's try again, ${name}!`);
+    const userAnswerPhrase = (response === 'yes' && result) || (response === 'no' && !result) || (response === 'no' && result) ? 'yes' : 'no';
 
     counter();
 
@@ -35,7 +33,7 @@ const guessExpression = async (userName) => {
       console.log(continueAnswerPhrase);
       return guessNumber === 3 ? console.log(winnerPhrase) : guessExpression(userName);
     }
-    return incorrectAnswerPhrase(response, randomNumber, userName);
+    return incorrectAnswerPhrase(response, userAnswerPhrase, userName);
   });
 };
 
