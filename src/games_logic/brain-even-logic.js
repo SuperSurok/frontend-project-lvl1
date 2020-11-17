@@ -1,5 +1,11 @@
 import promptly from 'promptly';
-import { userGreeting, numberGenRandom, askUserNumber, incorrectAnswerPhrase } from '../cli.js';
+import {
+  //
+  userGreeting,
+  numberGenRandom,
+  askUserNumber,
+  incorrectAnswerPhrase,
+} from '../cli.js';
 
 let guessNumber = 0;
 
