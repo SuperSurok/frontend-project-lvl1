@@ -1,6 +1,13 @@
 import promptly from 'promptly';
 
-export const userGreeting = async () => promptly.prompt('May I have your name?:');
+export const userGreeting = () => {
+  console.log('Welcome to the Brain Games!');
+  return promptly.prompt('May I have your name?:').then((userName) => {
+    console.log(`Hello, ${userName}!`);
+    console.log('Answer "yes" if the number is even, otherwise answer "no".');
+    return userName;
+  });
+};
 
 export const numberGenRandom = () => Math.floor(Math.random() * 100 + 1);
 
@@ -17,4 +24,7 @@ export const primeNumber = (number) => {
   return number > 1;
 };
 
-export const incorrectAnswerPhrase = (responseAnswer, correctResult, name) => console.log(`'${responseAnswer}' is wrong answer ;(. Correct answer was '${correctResult}'.\nLet's try again, ${name}!`);
+export const incorrectAnswerPhrase = (responseAnswer, name) => {
+  const userAnswerPhrase = responseAnswer === 'yes' ? 'no' : 'yes';
+  console.log(`'${responseAnswer}' is wrong answer ;(. Correct answer was '${userAnswerPhrase}'.\nLet's try again, ${name}!`);
+};

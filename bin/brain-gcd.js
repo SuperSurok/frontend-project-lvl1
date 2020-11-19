@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import nodLogic from '../src/games_logic/brain-gcd-logic.js';
+import nodLogic from '../src/games/gcd.js';
 
 nodLogic();
