@@ -53,7 +53,7 @@ const guessExpression = async (userName) => {
   });
 };
 
-const brainCalcLogic = async () => {
+const calc = async () => {
   console.log('Welcome to the Brain Games!');
   let userName;
   userGreeting()
@@ -67,4 +67,4 @@ const brainCalcLogic = async () => {
     .then(() => guessExpression(userName));
 };
 
-export default brainCalcLogic;
+export default calc;

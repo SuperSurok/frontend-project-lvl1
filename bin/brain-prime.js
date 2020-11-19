@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import primeLogic from '../src/games_logic/brain-prime-logic.js';
+import primeLogic from '../src/games/prime.js';
 
 primeLogic();
