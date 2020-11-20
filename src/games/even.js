@@ -14,7 +14,7 @@ const counter = () => () => {
   return guessNumber;
 };
 
-const userResponse = (questionNumber, response) => (questionNumber % 2 === 0 && response === 'yes') || (questionNumber % 2 !== 0 && response === 'no');
+const userResponse = (questionNumber, userAnswer) => (questionNumber % 2 === 0 && userAnswer === 'yes') || (questionNumber % 2 !== 0 && userAnswer === 'no');
 
 const playConditions = (userName) => {
   const count = counter();
@@ -24,16 +24,17 @@ const playConditions = (userName) => {
 
   askUserNumber(questionNumber);
 
-  promptly.prompt('Your answer:').then((response) => {
+  promptly.prompt('Your answer:').then((userAnswer) => {
+    const rightAnswer = userAnswer === 'yes' ? 'no' : 'yes';
     count();
-    if (userResponse(questionNumber, response)) {
+    if (userResponse(questionNumber, userAnswer)) {
       console.log(continueAnswerPhrase);
       if (guessNumber < 3) {
         return playConditions(userName);
       }
       console.log(winnerPhrase);
     } else {
-      return incorrectAnswerPhrase(response, userName);
+      return incorrectAnswerPhrase(userAnswer, userName, rightAnswer);
     }
     return true;
   });
