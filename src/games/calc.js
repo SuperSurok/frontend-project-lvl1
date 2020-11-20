@@ -14,7 +14,7 @@ const decrement = () => () => {
   return guessNumber;
 };
 
-const guessExpression = async (userName) => {
+const guessExpression = (userName) => {
   const counter = decrement();
   const continueAnswerPhrase = 'Correct!';
   const num1 = numberGenRandom();
@@ -40,31 +40,23 @@ const guessExpression = async (userName) => {
   }
 
   askUserNumber(questionExpression);
-  await promptly.prompt('Your answer:').then((response) => {
-    const userAnswerPhrase = Number(response) === result ? continueAnswerPhrase : `${response} is wrong answer ;(. Correct answer was ${result}.\nLet's try again, ${userName}!`;
-    console.log(userAnswerPhrase);
+  promptly.prompt('Your answer:').then((userAnswer) => {
+    if (Number(userAnswer) === result) {
+      console.log(continueAnswerPhrase);
+    }
 
     counter();
 
-    if (Number(response) === result) {
+    if (Number(userAnswer) === result) {
       return guessNumber === 3 ? console.log(winnerPhrase) : guessExpression(userName);
     }
-    return incorrectAnswerPhrase(response, result, userName);
+
+    return incorrectAnswerPhrase(userAnswer, userName, result);
   });
 };
 
-const calc = async () => {
-  console.log('Welcome to the Brain Games!');
-  let userName;
-  userGreeting()
-    .then((response) => {
-      userName = response;
-      console.log(`Hello, ${response}!`);
-    })
-    .then(() => {
-      console.log('What is the result of the expression?');
-    })
-    .then(() => guessExpression(userName));
+const calc = () => {
+  userGreeting().then((userName) => guessExpression(userName));
 };
 
 export default calc;
