@@ -47,10 +47,11 @@ const guessExpression = (userName) => {
 
     counter();
 
-    if (Number(response) === result) {
+    if (Number(userAnswer) === result) {
       return guessNumber === 3 ? console.log(winnerPhrase) : guessExpression(userName);
     }
-    return incorrectAnswerPhrase(response, result, userName);
+
+    return incorrectAnswerPhrase(userAnswer, userName, result);
   });
 };
 
