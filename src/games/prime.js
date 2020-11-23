@@ -2,10 +2,10 @@ import promptly from 'promptly';
 
 import {
   //
-  userGreeting,
+  engine,
   askUserNumber,
-  numberGenProgression,
-  primeNumber,
+  getRandomNumber,
+  isPrimeNumber,
   incorrectAnswerPhrase,
 } from '../cli.js';
 
@@ -20,9 +20,9 @@ const guessExpression = async (userName) => {
   const continueAnswerPhrase = 'Correct!';
   const winnerPhrase = `Congratulations, ${userName}!`;
   const counter = decrement();
-  const randomNumber = numberGenProgression(1, 30);
+  const randomNumber = getRandomNumber(1, 30);
 
-  const result = primeNumber(randomNumber);
+  const result = isPrimeNumber(randomNumber);
   askUserNumber(randomNumber);
   await promptly.prompt('Your answer:').then((response) => {
     const userAnswerPhrase = (response === 'yes' && result) || (response === 'no' && !result) || (response === 'no' && result) ? 'yes' : 'no';
@@ -41,7 +41,7 @@ const primeLogic = async () => {
   console.log('Welcome to the Brain Games!');
   let userName;
 
-  userGreeting()
+  engine()
     .then((response) => {
       userName = response;
       console.log(`Hello, ${response}!`);

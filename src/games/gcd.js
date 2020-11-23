@@ -1,8 +1,8 @@
 import promptly from 'promptly';
 import {
   //
-  userGreeting,
-  numberGenRandom,
+  engine,
+  getRandomNumber,
   askUserNumber,
   incorrectAnswerPhrase,
 } from '../cli.js';
@@ -17,8 +17,8 @@ const decrement = () => () => {
 const guessExpression = async (userName) => {
   const counter = decrement();
   const continueAnswerPhrase = 'Correct!';
-  const num1 = numberGenRandom();
-  const num2 = numberGenRandom();
+  const num1 = getRandomNumber(1, 100);
+  const num2 = getRandomNumber(1, 100);
   const winnerPhrase = `Congratulations, ${userName}!`;
   const questionExpression = `${num1} ${num2}`;
   const gcd = (a, b) => (!b ? a : gcd(b, a % b));
@@ -42,7 +42,7 @@ const nodLogic = async () => {
   console.log('Welcome to the Brain Games!');
   let userName;
 
-  userGreeting()
+  engine()
     .then((response) => {
       userName = response;
       console.log(`Hello, ${response}!`);

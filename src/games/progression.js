@@ -1,9 +1,9 @@
 import promptly from 'promptly';
 import {
   //
-  userGreeting,
+  engine,
   askUserNumber,
-  numberGenProgression,
+  getRandomNumber,
   incorrectAnswerPhrase,
 } from '../cli.js';
 
@@ -18,9 +18,9 @@ const guessExpression = async (userName) => {
   const continueAnswerPhrase = 'Correct!';
   const winnerPhrase = `Congratulations, ${userName}!`;
   const counter = decrement();
-  let num1 = numberGenProgression(1, 30);
-  const num2 = numberGenProgression(1, 10);
-  const maskNum1 = numberGenProgression(0, 9);
+  let num1 = getRandomNumber(1, 30);
+  const num2 = getRandomNumber(1, 10);
+  const maskNum1 = getRandomNumber(0, 9);
   const progression = [];
 
   for (let i = 0; i <= 10; i += 1) {
@@ -48,7 +48,7 @@ const progressionLogic = async () => {
   console.log('Welcome to the Brain Games!');
   let userName;
 
-  userGreeting()
+  engine()
     .then((response) => {
       userName = response;
       console.log(`Hello, ${response}!`);

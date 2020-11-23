@@ -1,6 +1,6 @@
 import promptly from 'promptly';
 
-export const userGreeting = () => {
+export const engine = () => {
   console.log('Welcome to the Brain Games!');
   return promptly.prompt('May I have your name?:').then((userName) => {
     console.log(`Hello, ${userName}!`);
@@ -9,15 +9,14 @@ export const userGreeting = () => {
   });
 };
 
-export const numberGenRandom = () => Math.floor(Math.random() * 100 + 1);
-
-export const numberGenProgression = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
+// eslint-disable-next-line max-len
+export const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
 
 export const askUserNumber = (questionNumber) => {
   console.log('Question', questionNumber);
 };
 
-export const primeNumber = (number) => {
+export const isPrimeNumber = (number) => {
   for (let i = 2; i < number; i += 1) {
     if (number % i === 0) return false;
   }

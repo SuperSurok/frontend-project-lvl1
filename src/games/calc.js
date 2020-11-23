@@ -1,8 +1,8 @@
 import promptly from 'promptly';
 import {
   //
-  userGreeting,
-  numberGenRandom,
+  engine,
+  getRandomNumber,
   askUserNumber,
   incorrectAnswerPhrase,
 } from '../cli.js';
@@ -17,8 +17,8 @@ const decrement = () => () => {
 const guessExpression = (userName) => {
   const counter = decrement();
   const continueAnswerPhrase = 'Correct!';
-  const num1 = numberGenRandom();
-  const num2 = numberGenRandom();
+  const num1 = getRandomNumber(1, 100);
+  const num2 = getRandomNumber(1, 100);
   const mathSignsArr = ['+', '-', '*'];
   const winnerPhrase = `Congratulations, ${userName}!`;
   const randomMathSign = mathSignsArr[Math.floor(Math.random() * mathSignsArr.length)];
@@ -56,7 +56,7 @@ const guessExpression = (userName) => {
 };
 
 const calc = () => {
-  userGreeting().then((userName) => guessExpression(userName));
+  engine().then((userName) => guessExpression(userName));
 };
 
 export default calc;

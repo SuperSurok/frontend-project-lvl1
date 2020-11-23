@@ -3,33 +3,40 @@ import {
   //
   askUserNumber,
   incorrectAnswerPhrase,
-  numberGenRandom,
-  userGreeting,
+  getRandomNumber,
+  engine,
 } from '../cli.js';
 
-let guessNumber = 0;
+// let guessNumber = 0;
+// const counter = () => () => {
+//   guessNumber += 1;
+//   return guessNumber;
+// };
 
-const counter = () => () => {
-  guessNumber += 1;
-  return guessNumber;
+const counter = () => {
+  let count = 0;
+  return () => {
+    count += 1;
+    return count;
+  };
 };
 
-const userResponse = (questionNumber, userAnswer) => (questionNumber % 2 === 0 && userAnswer === 'yes') || (questionNumber % 2 !== 0 && userAnswer === 'no');
+const count = counter();
+
+const getCorrectAnswer = (number) => (number % 2 === 0 ? 'yes' : 'no');
 
 const playConditions = (userName) => {
-  const count = counter();
   const continueAnswerPhrase = 'Correct!';
   const winnerPhrase = `Congratulations, ${userName}!`;
-  const questionNumber = numberGenRandom();
+  const questionNumber = getRandomNumber(1, 100);
 
   askUserNumber(questionNumber);
 
   promptly.prompt('Your answer:').then((userAnswer) => {
     const rightAnswer = userAnswer === 'yes' ? 'no' : 'yes';
-    count();
-    if (userResponse(questionNumber, userAnswer)) {
+    if (getCorrectAnswer(questionNumber) === userAnswer) {
       console.log(continueAnswerPhrase);
-      if (guessNumber < 3) {
+      if (count() < 3) {
         return playConditions(userName);
       }
       console.log(winnerPhrase);
@@ -40,8 +47,14 @@ const playConditions = (userName) => {
   });
 };
 
+const getQuestionAndAnswer = () => {
+  const questionNumber = getRandomNumber(1, 100);
+  const correctAnswer = getCorrectAnswer(questionNumber);
+  return { questionNumber, correctAnswer };
+};
+
 const even = () => {
-  userGreeting().then((userName) => playConditions(userName));
+  engine(getQuestionAndAnswer).then((userName) => playConditions(userName));
 };
 
 export default even;
