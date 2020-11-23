@@ -7,12 +7,6 @@ import {
   engine,
 } from '../cli.js';
 
-// let guessNumber = 0;
-// const counter = () => () => {
-//   guessNumber += 1;
-//   return guessNumber;
-// };
-
 const counter = () => {
   let count = 0;
   return () => {
@@ -24,6 +18,7 @@ const counter = () => {
 const count = counter();
 
 const getCorrectAnswer = (number) => (number % 2 === 0 ? 'yes' : 'no');
+const gamePhrase = 'Answer "yes" if the number is even, otherwise answer "no".';
 
 const playConditions = (userName) => {
   const continueAnswerPhrase = 'Correct!';
@@ -53,8 +48,8 @@ const getQuestionAndAnswer = () => {
   return { questionNumber, correctAnswer };
 };
 
-const even = () => {
-  engine(getQuestionAndAnswer).then((userName) => playConditions(userName));
+const even = async () => {
+  await engine(getQuestionAndAnswer, gamePhrase);
 };
 
 export default even;
