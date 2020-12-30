@@ -1,12 +1,33 @@
 import promptly from 'promptly';
 
-export const engine = () => {
+const counter = () => {
+  let count = 0;
+  return () => {
+    count += 1;
+    return count;
+  };
+};
+
+const count = counter();
+
+export const engine = async (logicGame, gamePhrase) => {
+  const { questionNumber, correctAnswer } = logicGame();
+  const attempt = count();
   console.log('Welcome to the Brain Games!');
-  return promptly.prompt('May I have your name?:').then((userName) => {
-    console.log(`Hello, ${userName}!`);
-    console.log('Answer "yes" if the number is even, otherwise answer "no".');
-    return userName;
-  });
+  const userName = await promptly.prompt('May I have your name?:');
+  console.log(`Hello, ${userName}!`);
+  console.log(gamePhrase);
+  console.log('Question', questionNumber);
+  const userAnswer = await promptly.prompt('Your answer:');
+  if (userAnswer !== correctAnswer) {
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`);
+  }
+  if (userAnswer === correctAnswer) {
+    console.log('Question', questionNumber);
+    if (attempt === 3) {
+      console.log(`Congratulations, ${userName}!`);
+    }
+  }
 };
 
 // eslint-disable-next-line max-len
