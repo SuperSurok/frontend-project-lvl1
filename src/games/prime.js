@@ -1,7 +1,6 @@
 import promptly from 'promptly';
 
 import {
-  //
   engine,
   askUserNumber,
   getRandomNumber,

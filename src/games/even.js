@@ -1,6 +1,5 @@
 import promptly from 'promptly';
 import {
-  //
   askUserNumber,
   incorrectAnswerPhrase,
   getRandomNumber,
